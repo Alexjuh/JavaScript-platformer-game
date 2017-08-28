@@ -22,11 +22,12 @@ define(['Class','ImageLoader','SpriteSheet','Animation'],function(Class,ImageLoa
   Assets.getAssets = function(_name){
     return assets[_name];
   }
+
   // create player assets
   var player = new Assets("player","res/textures/link.png",120,130);
 
   //Build frames
-  var framespeed = 30,
+  var framespeed = 75,
   // walk right/left/up/down frames
   wrframes = [],
   wlframes = [],

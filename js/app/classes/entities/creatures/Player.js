@@ -4,10 +4,10 @@ define(['Creature','Assets'],function(Creature,Assets){
     init:function(_handler,_x,_y){
       this._super(_handler,_x,_y,Creature.DEFAULT_CREATURE_WIDTH,Creature.DEFAULT_CREATURE_HEIGHT);
       this.assets = Assets.getAssets("player");
-      this.bounds.x = 5;
-      this.bounds.y = 25;
-      this.bounds.width = 15;
-      this.bounds.height = 15;
+      this.bounds.x = 16;
+      this.bounds.y = 32;
+      this.bounds.width = 25;
+      this.bounds.height = 32;
     },
     tick:function(_dt){
       this.getInput(_dt);
@@ -20,7 +20,7 @@ define(['Creature','Assets'],function(Creature,Assets){
       this.assets.animations.idle.tick();
     },
     render:function(_g){
-      _g.myDrawImage(this.assets.animations.walk_right.getCurrentFrame(),this.x - this.handler.getGameCamera().getxOffset(),this.y - this.handler.getGameCamera().getyOffset(),this.width,this.height);
+      _g.myDrawImage(this.getCurrentAnimationFrame(),this.x - this.handler.getGameCamera().getxOffset(),this.y - this.handler.getGameCamera().getyOffset(),this.width,this.height);
     },
     getInput:function(_dt){
       this.xMove=0;
@@ -41,6 +41,15 @@ define(['Creature','Assets'],function(Creature,Assets){
     getCurrentAnimationFrame:function(){
       if(this.xMove<0){
         return this.assets.animations.walk_left.getCurrentFrame();
+      }
+      else if (this.xMove>0){
+        return this.assets.animations.walk_right.getCurrentFrame();
+      }else if(this.yMove<0){
+        return this.assets.animations.walk_up.getCurrentFrame();
+      }else if(this.yMove>0){
+        return this.assets.animations.walk_down.getCurrentFrame();
+      }else{
+        return this.assets.animations.idle.getCurrentFrame();
       }
     }
 
