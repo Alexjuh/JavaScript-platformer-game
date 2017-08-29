@@ -1,3 +1,3 @@
 require(['Launcher'],function(Launcher){
-    var launcher = new Launcher("Tile Game",600,300);
+    var launcher = new Launcher("Tile Game",800,500);
   });

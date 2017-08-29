@@ -70,6 +70,11 @@ define(['Class','ImageLoader','SpriteSheet','Animation'],function(Class,ImageLoa
 	player.addAnimation("walk_down",new Animation(wdframes));
 	player.addAnimation("idle",new Animation(idleframes));
 
+  //726,798
+  //tree assets
+  var tree = new Assets("tree","res/textures/tree_01.png",726,798);
+  tree.redwood = tree.sheet.crop(0,0,726,798);
+
   //Tile asset
   var tiles = new Assets("tiles","res/textures/tiles.png",30,30);
   tiles.dirt = tiles.sheet.crop(0,tiles.height*10,tiles.width,tiles.height); //de 0 (eerste cijfer) is de colom, de 10 (tweede cijfer) staat voor de 10e rij op het plaatje. op deze manier kan je ze uitknippen.
