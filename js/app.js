@@ -22,6 +22,7 @@ requirejs.config({
     "Launcher":"app/classes/launcher",
     "Player":"app/classes/entities/creatures/Player",
     "Rectangle":"app/classes/gfx/shapes/Rectangle",
+    "SpatialGrid":"app/classes/utils/SpatialGrid",
     "SpriteSheet":"app/classes/gfx/SpriteSheet",
     "State":"app/classes/states/State",
     "StaticEntity":"app/classes/entities/statics/StaticEntity",

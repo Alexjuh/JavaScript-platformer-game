@@ -1,13 +1,15 @@
-define(['Class','TileLoader','Utils','EntityManager','Player','Tree'],function(Class,Tile,Utils,EntityManager,Player,Tree){
+define(['Class','TileLoader','Utils','EntityManager','Player','Tree','SpatialGrid'],function(Class,Tile,Utils,EntityManager,Player,Tree,SpatialGrid){
 
   var World = Class.extend({
     init:function(_path,_handler){
       this.tiles = [];
-      this.loadWorld(_path);
       this.handler = _handler;
       _handler.setWorld(this);
       this.entityManager = new EntityManager(_handler,new Player(_handler,100,100));
+      this.loadWorld(_path);
+      this.spatialGrid = new SpatialGrid(this.width * Tile.TILEWIDTH,this.height * Tile.TILEHEIGHT,100);
       this.entityManager.addEntity(new Tree(_handler,100,400)); // 100 en 400: verplaats boom
+      this.entityManager.addEntity(new Tree(_handler,150,500));
       this.entityManager.getPlayer().setX(this.spawnX);
       this.entityManager.getPlayer().setY(this.spawnY);
     },
@@ -59,6 +61,9 @@ define(['Class','TileLoader','Utils','EntityManager','Player','Tree'],function(C
     },
     getEntityManager:function(){
       return this.entityManager;
+    },
+    getSpatialGrid:function(){
+      return this.spatialGrid;
     }
   });
 
