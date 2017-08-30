@@ -8,9 +8,6 @@ define(['Class','TileLoader','Utils','EntityManager','Player','Tree'],function(C
       _handler.setWorld(this);
       this.entityManager = new EntityManager(_handler,new Player(_handler,100,100));
       this.entityManager.addEntity(new Tree(_handler,100,400)); // 100 en 400: verplaats boom
-      this.entityManager.addEntity(new Tree(_handler,200,500));
-      this.entityManager.addEntity(new Tree(_handler,200,450));
-      this.entityManager.addEntity(new Tree(_handler,300,700));
       this.entityManager.getPlayer().setX(this.spawnX);
       this.entityManager.getPlayer().setY(this.spawnY);
     },
@@ -59,6 +56,9 @@ define(['Class','TileLoader','Utils','EntityManager','Player','Tree'],function(C
     },
     getHeight:function(){
       return this.height;
+    },
+    getEntityManager:function(){
+      return this.entityManager;
     }
   });
 

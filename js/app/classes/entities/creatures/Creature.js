@@ -1,4 +1,4 @@
-define(['Entity','Tile'],function(Entity,Tile){
+define(['Entity','Tile','Rectangle'],function(Entity,Tile,Rectangle){
 
   var DEFAULT_SPEED = 250,
       DEFAULT_HEALTH = 10,
@@ -14,8 +14,10 @@ define(['Entity','Tile'],function(Entity,Tile){
       this.yMove = 0;
     },
     move:function(){
-      this.moveX();
-      this.moveY();
+      if(!this.checkEntityCollisions(this.xMove,0))
+        this.moveX();
+      if(!this.checkEntityCollisions(0,this.yMove))
+        this.moveY();
     },
     moveX:function(){
       if(this.xMove>0){
