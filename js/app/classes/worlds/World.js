@@ -7,6 +7,7 @@ define(['Class','TileLoader','Utils','EntityManager','Player','Tree','SpatialGri
       _handler.setWorld(this);
       this.entityManager = new EntityManager(_handler,new Player(_handler,100,100));
       this.loadWorld(_path);
+      this.startDrag = {};
       this.spatialGrid = new SpatialGrid(this.width * Tile.TILEWIDTH,this.height * Tile.TILEHEIGHT,100);
       this.entityManager.addEntity(new Tree(_handler,100,400)); // 100 en 400: verplaats boom
       this.entityManager.addEntity(new Tree(_handler,150,500));
@@ -29,6 +30,7 @@ define(['Class','TileLoader','Utils','EntityManager','Player','Tree','SpatialGri
       }
     },
     tick:function(_dt){
+      this.getMouseInput();
       this.entityManager.tick(_dt);
     },
     render:function(_g){
@@ -50,6 +52,14 @@ define(['Class','TileLoader','Utils','EntityManager','Player','Tree','SpatialGri
 
       this.entityManager.render(_g);
     },
+    click:function(_btn){
+      if(_btn=="middle"){
+        var pos = this.handler.getMouseManager().getMousePosition();
+        this.startDrag = {x: pos.x + this.handler.getGameCamera().getxOffset(),
+          y: pos.y + this.handler.getGameCamera().getyOffset()};
+      }
+      this.entityManager.click(_btn);
+    },
     getTile:function(_x,_y){
       return Tile.tiles[this.tiles[_x][_y]];
     },
@@ -64,6 +74,14 @@ define(['Class','TileLoader','Utils','EntityManager','Player','Tree','SpatialGri
     },
     getSpatialGrid:function(){
       return this.spatialGrid;
+    },
+    getMouseInput:function(){
+      var pos = this.handler.getMouseManager().getMousePosition();
+      console.log(this.handler.getMouseManager().middle);
+        if(this.handler.getMouseManager().middle){
+          this.handler.getGameCamera().setxOffset(this.startDrag.x - pos.x);
+          this.handler.getGameCamera().setyOffset(this.startDrag.y - pos.y);
+        }
     }
   });
 

@@ -12,7 +12,7 @@ define(['Creature','Assets'],function(Creature,Assets){
     tick:function(_dt){
       this.getInput(_dt);
       this.move();
-      this.handler.getGameCamera().centerOnEntity(this);
+      //this.handler.getGameCamera().centerOnEntity(this);
       this.assets.animations.walk_right.tick();
       this.assets.animations.walk_left.tick();
       this.assets.animations.walk_up.tick();
@@ -21,6 +21,9 @@ define(['Creature','Assets'],function(Creature,Assets){
     },
     render:function(_g){
       _g.myDrawImage(this.getCurrentAnimationFrame(),this.x - this.handler.getGameCamera().getxOffset(),this.y - this.handler.getGameCamera().getyOffset(),this.width,this.height);
+    },
+    click:function(_btn){
+      
     },
     getInput:function(_dt){
       this.xMove=0;
