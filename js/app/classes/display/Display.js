@@ -9,7 +9,7 @@ define(['Jquery', 'Class'], function($, Class){
       height = _height;
       createDisplay();
     },
-    
+
     // getters
     getTitle:function(){
       return title;
@@ -22,6 +22,9 @@ define(['Jquery', 'Class'], function($, Class){
     },
     getGraphics:function(){
       return graphics;
+    },
+    getCanvas:function(){
+      return canvas;
     }
   });
 
@@ -30,7 +33,8 @@ define(['Jquery', 'Class'], function($, Class){
     document.title = title;
     var body = document.body;
     body.innerHTML = "<canvas id='canvas' width='"+width+"' height='"+height+"'></canvas>";
-    graphics = document.getElementById("canvas").getContext("2d");
+    canvas = document.getElementById("canvas");
+    graphics = canvas.getContext("2d");
   }
 
   CanvasRenderingContext2D.prototype.myDrawImage = function(asset,_x,_y,_width,_height){
