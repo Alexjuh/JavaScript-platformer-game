@@ -19,9 +19,11 @@ define(['Class','Tile'],function(Class,Tile){
     //Getters
     getxOffset:function(){
       return parseInt(xOffset);
+      this.checkBlankSpace();
     },
     getyOffset:function(){
       return parseInt(yOffset);
+      this.checkBlankSpace();
     },
     //Setters
     setxOffset:function(_offset){

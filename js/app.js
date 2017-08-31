@@ -20,6 +20,7 @@ requirejs.config({
     "ImageLoader":"app/classes/gfx/ImageLoader",
     "KeyManager":"app/classes/input/KeyManager",
     "Launcher":"app/classes/launcher",
+    "MouseManager":"app/classes/input/MouseManager",
     "Player":"app/classes/entities/creatures/Player",
     "Rectangle":"app/classes/gfx/shapes/Rectangle",
     "SpatialGrid":"app/classes/utils/SpatialGrid",
