@@ -10,6 +10,9 @@ define(['State','World'],function(State,World){
     },
     render:function(_g){
       this.world.render(_g);//laad de wereldkaart
+    },
+    click:function(_btn){
+      this.world.click(_btn);
     }
   });
 
