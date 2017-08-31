@@ -40,6 +40,14 @@ define(['Class','Rectangle'],function(Class,Rectangle){
     addEntity:function(e){
       entities.push(e);
       handler.getWorld().getSpatialGrid().insert(new Rectangle(e.x + e.bounds.x, e.y + e.bounds.y, e.bounds.width, e.bounds.height),e);
+    },
+    removeEntity:function(_ent){
+      for(i=0;i<entities.length;i++){
+        var e = entities[i];
+        if(e===_ent){
+          entities.splice(i,1);
+        }
+      }
     }
   });
 

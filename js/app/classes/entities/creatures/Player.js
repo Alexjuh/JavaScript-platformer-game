@@ -1,4 +1,4 @@
-define(['Creature','Assets'],function(Creature,Assets){
+define(['Creature','Assets','HealthBar'],function(Creature,Assets,HealthBar){
 
   var Player = Creature.extend({
     init:function(_handler,_x,_y){
@@ -10,6 +10,22 @@ define(['Creature','Assets'],function(Creature,Assets){
       this.bounds.height = 32;
       this.path = [];
       this.timeStopped = 0;
+      var hb_prop = {
+        color: "red",
+        yoffset:20,
+        nodes:10,
+        split:1,
+        width:100,
+        height:8,
+        // fadetime:.95,
+        renderOnFull:"on",
+        border:{
+          show:true,
+          color:"black",
+          width:2
+        }
+      }
+      this.healthBar = new HealthBar(_handler,this,hb_prop);
     },
     tick:function(_dt){
       // this.getInput(_dt);
@@ -24,6 +40,7 @@ define(['Creature','Assets'],function(Creature,Assets){
     },
     render:function(_g){
       _g.myDrawImage(this.getCurrentAnimationFrame(),this.x - this.handler.getGameCamera().getxOffset(),this.y - this.handler.getGameCamera().getyOffset(),this.width,this.height);
+      this.healthBar.render(_g);
     },
     click:function(_btn){
       if(_btn=="right"){

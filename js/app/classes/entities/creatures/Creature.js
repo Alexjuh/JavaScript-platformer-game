@@ -82,6 +82,17 @@ define(['Entity','Tile','Rectangle'],function(Entity,Tile,Rectangle){
       return Math.sqrt(speedX*speedX+speedY*speedY);
     },
     //setters
+    takeDamage:function(_damage){
+      this.health-= _damage;
+      if(typeof this.healthbar !="undefined")
+        this.healthbar.update();
+      if(this.health<=0){
+        this.die();
+      }
+    },
+    die:function(){
+      this.handler.getWorld().getEntityManager().removeEntity(this);
+    },
     setHealth:function(_health){
       this.health = _health;
     },
