@@ -6,9 +6,14 @@ define(['Class'],function(Class){
       this.handler = _handler;
     },
     tick:function(_dt){
+      throw("Every state needs a tick");
     },
     render:function(_g){
-    }
+      throw("Every state needs a render");
+    },
+    click:function(){
+      throw("Every state needs a click");
+    },
   });
 
   State.getState = function(){
