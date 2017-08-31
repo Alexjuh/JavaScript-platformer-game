@@ -77,7 +77,6 @@ define(['Class','TileLoader','Utils','EntityManager','Player','Tree','SpatialGri
     },
     getMouseInput:function(){
       var pos = this.handler.getMouseManager().getMousePosition();
-      console.log(this.handler.getMouseManager().middle);
         if(this.handler.getMouseManager().middle){
           this.handler.getGameCamera().setxOffset(this.startDrag.x - pos.x);
           this.handler.getGameCamera().setyOffset(this.startDrag.y - pos.y);

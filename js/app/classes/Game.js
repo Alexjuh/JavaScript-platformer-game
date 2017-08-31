@@ -10,7 +10,7 @@ define(['Class','Display','State','GameState','KeyManager','MouseManager','Handl
       title = _title;
       width = _width;
       height = _height;
-      // keyManager = new KeyManager();
+
     },
     run:function(){
       init();
@@ -48,7 +48,7 @@ define(['Class','Display','State','GameState','KeyManager','MouseManager','Handl
       return keyManager;
     },
     getMouseManager:function(){
-      return mouseManager
+      return mouseManager;
     },
     getDisplay:function(){
       return display;
@@ -59,7 +59,7 @@ define(['Class','Display','State','GameState','KeyManager','MouseManager','Handl
     getHeight:function(){
       return height;
     },
-    getGameCamera(){
+    getGameCamera:function(){
       return gameCamera;
     },
     click:function(_btn){
