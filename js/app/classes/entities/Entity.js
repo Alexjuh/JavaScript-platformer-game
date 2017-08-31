@@ -9,11 +9,15 @@ define(['Class','Rectangle'],function(Class,Rectangle){
       this.height = _height;
       this.bounds = new Rectangle(0,0,_width,_height);
     },
-    tick:function(_dt){
+    tick:function(){
+      throw("Entities must have a tick function");
     },
-    render:function(_g){
+    render:function(){
+      throw("Entities must have a render function");
     },
-
+    click:function(){
+      throw("Entities must have a click function");
+    },
     //Getters
     getX:function(){
       return this.x;
